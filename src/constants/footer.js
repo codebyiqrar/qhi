@@ -17,6 +17,7 @@ export const productsLinks = [
   { title: "QRCM", link: ROUTES.SOLUTIONS.QRCM },
   { title: "QCharge AI", link: ROUTES.SOLUTIONS.QCHARGE },
   { title: "QRPM", link: ROUTES.SOLUTIONS.QRPM },
+  { title: "QEHR", link: ROUTES.SOLUTIONS.QEHR },
 ];
 
 export const resourcesLinks = [
@@ -35,6 +36,7 @@ export const footerLinks = [
       { title: "QChargeAI", link: ROUTES.SOLUTIONS.QCHARGE },
       { title: "QRCM", link: ROUTES.SOLUTIONS.QRCM },
       { title: "QRPM", link: ROUTES.SOLUTIONS.QRPM },
+      { title: "QEHR", link: ROUTES.SOLUTIONS.QEHR },
     ]
   },
   {

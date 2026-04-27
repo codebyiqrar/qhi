@@ -22,8 +22,8 @@ export const metadata = {
 const ChargeCapture = () => {
   return (
     <React.Fragment>
-      {/* <HeroSection /> */}
-      <ChargeCaptureShowcaseSection />
+      <HeroSection />
+      {/* <ChargeCaptureShowcaseSection /> */}
       <ChargeCaptureSection4 />
       <ChargeCaptureSection6 />
       <ChargeCaptureSection8 />

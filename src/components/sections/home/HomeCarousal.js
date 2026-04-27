@@ -164,7 +164,7 @@ const products = [
     tagline: "Revenue Cycle Management",
     description: "End-to-end revenue cycle management powered by intelligent automation to maximize your clinical reimbursements and streamline operations.",
     image: "https://images.unsplash.com/photo-1675270347058-8066cd1fe523?q=80&w=1225&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    href: "#",
+    href: "/solutions/revenue-cycle-management",
   },
   {
     id: 2,
@@ -172,7 +172,7 @@ const products = [
     tagline: "AI-Driven Charge Capture",
     description: "Eliminate lost revenue with smart bedside charge capture. Cleaner billing starts at the point of care with real-time AI validation.",
     image: "https://img.freepik.com/free-photo/overhead-view-stethoscope-open-laptop-with-clipboard-eyeglasses-white-background_23-2147883806.jpg?semt=ais_rp_50_assets&w=740&q=80",
-    href: "#",
+  href: "/solutions/charge-capture",
   },
   {
     id: 3,
@@ -180,7 +180,7 @@ const products = [
     tagline: "Remote Patient Monitoring",
     description: "Extend care beyond the clinic walls with real-time patient tracking and actionable health insights delivered directly to your dashboard.",
     image: "https://images.unsplash.com/photo-1758691462749-a95ce1bd7f96?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    href: "#",
+href: "/solutions/remote-patient-monitoring",
   },
   {
     id: 4,
@@ -188,7 +188,7 @@ const products = [
     tagline: "Electronic Health Records",
     description: "A modern, intuitive electronic health record system designed to reduce provider burnout and improve patient outcomes through smart UX.",
     image: "https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    href: "#",
+href: "/solutions/electronic-health-record",
   },
 ];
 
@@ -201,10 +201,10 @@ export default function App() {
     setActiveIndex((prev) => (prev + 1) % products.length);
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(handleNext, SLIDE_DURATION);
-    return () => clearInterval(interval);
-  }, [handleNext]);
+//   useEffect(() => {
+//     const interval = setInterval(handleNext, SLIDE_DURATION);
+//     return () => clearInterval(interval);
+//   }, [handleNext]);
 
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 mt-8">
@@ -220,18 +220,14 @@ export default function App() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+                exit={{ opacity: 0, x: 12 }}
+                transition={{ duration: 0.28, ease: [0.2, 0.8, 0.2, 1] }}
               >
-                <motion.span 
-                   initial={{ opacity: 0 }}
-                   animate={{ opacity: 1 }}
-                   className="inline-block text-primary font-bold tracking-widest text-xs uppercase mb-4"
-                >
+                <span className="inline-block text-primary font-bold tracking-widest text-xs uppercase mb-4">
                   {products[activeIndex].tagline}
-                </motion.span>
+                </span>
                 
                 <h1 className="text-5xl md:text-3xl lg:text-4xl font-bold text-primary mb-6 tracking-tight leading-[1.1]">
                   {products[activeIndex].name}
@@ -272,7 +268,7 @@ export default function App() {
                 initial={{ opacity: 0, scale: 1.1 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
+                transition={{ duration: 0.75, ease: "easeOut" }}
                 className="absolute inset-0 h-full w-full"
               >
                 <img
@@ -287,17 +283,25 @@ export default function App() {
 
         {/* Bottom Pagination */}
         <div className="absolute bottom-10 left-1/2 z-30 flex -translate-x-1/2 items-center gap-4">
-          <div className="flex gap-2">
+          <div className="flex items-center gap-4">
             {products.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setActiveIndex(idx)}
-                className="group relative py-4 focus:outline-none"
+                className="group relative flex h-5 w-5 items-center justify-center focus:outline-none"
                 aria-label={`Go to slide ${idx + 1}`}
               >
-                <div className={`h-1 rounded-full transition-all duration-500 ${
-                  activeIndex === idx ? "w-12 bg-blue-600" : "w-6 bg-slate-200 group-hover:bg-slate-300"
-                }`} />
+                <span
+                  className={`relative block rounded-full transition-all duration-300 ${
+                    activeIndex === idx
+                      ? "h-5 w-5 border-2 border-blue-600 bg-transparent"
+                      : "h-3 w-3 bg-white border border-gray-400 shadow-[0_0_0_1px_rgba(255,255,255,0.9)] group-hover:scale-110 group-hover:bg-blue-600 group-hover:shadow-[0_0_0_1px_rgba(37,99,235,0.4)]"
+                  }`}
+                >
+                  {activeIndex === idx ? (
+                    <span className="absolute left-1/2 top-1/2 block h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600" />
+                  ) : null}
+                </span>
               </button>
             ))}
           </div>

@@ -14,6 +14,7 @@ export const navItems = [
       { label: "QRCM (Revenue Cycle Management)", link: ROUTES.SOLUTIONS.QRCM },
       { label: "QChargeAI (Charge Capture)", link: ROUTES.SOLUTIONS.QCHARGE },
       { label: "QRPM (Remote Patient Monitoring)", link: ROUTES.SOLUTIONS.QRPM },
+      { label: "QEHR (Electronic Health Record)", link: ROUTES.SOLUTIONS.QEHR },
     ],
   },
   {
@@ -50,20 +51,20 @@ export const navItems = [
       // { label: "White Papers", link: "#" },
     ],
   },
-  {
-    label: "Specialities",
-    link: "#",
-    submenu: [
-      { label: "Specialities", link: "#" },
-    ],
-  },
-  {
-    label: "Locations",
-    link: "#",
-    submenu: [
-      { label: "Locations", link: "#" },
-    ],
-  },
+  // {
+  //   label: "Specialities",
+  //   link: "#",
+  //   submenu: [
+  //     { label: "Specialities", link: "#" },
+  //   ],
+  // },
+  // {
+  //   label: "Locations",
+  //   link: "#",
+  //   submenu: [
+  //     { label: "Locations", link: "#" },
+  //   ],
+  // },
 ];
 
 // import { ROUTES } from "./routes";
