@@ -189,9 +189,9 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 pt-4">
-      <div className="mx-auto max-w-7xl px-2 sm:px-4">
-        <div className="flex h-14 items-center justify-between rounded-xl bg-white px-2 sm:px-4 shadow-2xl">
+    <header className="fixed top-0 left-0 right-0 z-40 ">
+      <div className="mx-auto  ">
+        <div className="flex h-16 items-center justify-between  bg-white px-2 sm:px-4 shadow">
           <Link
             href={ROUTES.HOME}
             className="flex shrink-0 items-center gap-1.5 sm:gap-2.5"
