@@ -172,7 +172,7 @@ const products = [
     tagline: "AI-Driven Charge Capture",
     description: "Eliminate lost revenue with smart bedside charge capture. Cleaner billing starts at the point of care with real-time AI validation.",
     image: "https://img.freepik.com/free-photo/overhead-view-stethoscope-open-laptop-with-clipboard-eyeglasses-white-background_23-2147883806.jpg?semt=ais_rp_50_assets&w=740&q=80",
-  href: "/solutions/charge-capture",
+    href: "/solutions/charge-capture",
   },
   {
     id: 3,
@@ -180,7 +180,7 @@ const products = [
     tagline: "Remote Patient Monitoring",
     description: "Extend care beyond the clinic walls with real-time patient tracking and actionable health insights delivered directly to your dashboard.",
     image: "https://images.unsplash.com/photo-1758691462749-a95ce1bd7f96?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-href: "/solutions/remote-patient-monitoring",
+    href: "/solutions/remote-patient-monitoring",
   },
   {
     id: 4,
@@ -188,35 +188,33 @@ href: "/solutions/remote-patient-monitoring",
     tagline: "Electronic Health Records",
     description: "A modern, intuitive electronic health record system designed to reduce provider burnout and improve patient outcomes through smart UX.",
     image: "https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-href: "/solutions/electronic-health-record",
+    href: "/solutions/electronic-health-record",
   },
 ];
 
 const SLIDE_DURATION = 8000;
 
-export default function App() {
+export default function HomeCarousal() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleNext = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % products.length);
   }, []);
 
-//   useEffect(() => {
-//     const interval = setInterval(handleNext, SLIDE_DURATION);
-//     return () => clearInterval(interval);
-//   }, [handleNext]);
+  //   useEffect(() => {
+  //     const interval = setInterval(handleNext, SLIDE_DURATION);
+  //     return () => clearInterval(interval);
+  //   }, [handleNext]);
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 mt-8">
+    <div className="mt-12 flex items-center justify-center bg-slate-50 px-3 py-2 sm:mt-16 sm:px-4 sm:py-4">
       <section
-        className="relative w-full max-w-[1440px] mx-auto overflow-hidden rounded-3xl bg-white shadow-2xl shadow-slate-200/50"
-        style={{ minHeight: "clamp(600px, 80vh, 900px)" }}
+        className="relative mx-auto w-full max-w-[1440px] min-h-0 overflow-hidden rounded-2xl bg-white shadow-2xl shadow-slate-200/50 sm:rounded-3xl md:h-[min(56svh,540px)] md:min-h-[400px] lg:min-h-[440px]"
         aria-label="Product highlights"
       >
-        <div className="flex flex-col md:flex-row h-full w-full min-h-[inherit]">
-          
-          {/* Left: Text Content */}
-          <div className="relative z-20 flex w-full flex-col justify-center px-8 py-16 md:w-5/12 md:px-16 lg:px-24">
+        <div className="flex min-h-0 w-full flex-col md:h-full md:flex-row md:items-stretch">
+          {/* Text: below image on mobile, left on md+ */}
+          <div className="relative z-20 order-2 flex w-full min-w-0 flex-col justify-center px-5 py-8 sm:px-8 sm:py-10 md:order-1 md:w-5/12 md:px-12 md:py-10 lg:px-20 xl:px-24">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -224,48 +222,43 @@ export default function App() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 12 }}
                 transition={{ duration: 0.28, ease: [0.2, 0.8, 0.2, 1] }}
+                className="max-md:pb-10 md:mb-0"
               >
-                <span className="inline-block text-primary font-bold tracking-widest text-xs uppercase mb-4">
+                <span className="mb-3 inline-block text-xs font-bold uppercase tracking-widest text-primary sm:mb-4 sm:text-sm md:text-base">
                   {products[activeIndex].tagline}
                 </span>
-                
-                <h1 className="text-5xl md:text-3xl lg:text-4xl font-bold text-primary mb-6 tracking-tight leading-[1.1]">
-                  {products[activeIndex].name}
-                </h1>
-                
-                <p className="text-lg text-slate-600 mb-10 max-w-md leading-relaxed">
+
+                <p className="mb-6 max-w-md text-base leading-relaxed text-slate-600 sm:mb-8 sm:text-lg md:mb-10">
                   {products[activeIndex].description}
                 </p>
 
-                <div className="flex items-center gap-4">
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4">
                   <a
                     href={products[activeIndex].href}
-                    className="group inline-flex items-center gap-2 rounded-full  px-5 py-2 text-sm font-bold text-white transition-all bg-primary hover:shadow-xl hover:shadow-blue-200 active:scale-95"
+                    className="group inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-bold text-white transition-all hover:shadow-xl hover:shadow-blue-200 active:scale-95 sm:px-5"
                   >
                     Learn more
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
                   </a>
                 </div>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Right: Image Section */}
-          <div className="relative w-full md:w-7/12 h-[400px] md:h-auto overflow-hidden">
-            {/* Gradient Overlay for blending */}
+          {/* Image: top on mobile, right on md+ */}
+          <div className="relative order-1 h-[min(36svh,280px)] min-h-[200px] w-full min-w-0 overflow-hidden sm:min-h-[220px] sm:h-[min(38svh,320px)] md:order-2 md:h-auto md:min-h-0 md:w-7/12 md:flex-1">
             <div className="absolute inset-0 z-10 hidden md:block">
-               <div className="h-full w-1/3 bg-gradient-to-r from-white via-white/80 to-transparent" />
+              <div className="h-full w-1/3 bg-linear-to-r from-white via-white/80 to-transparent" />
             </div>
-            
-            {/* Mobile Gradient (Top to Bottom) */}
+
             <div className="absolute inset-0 z-10 md:hidden">
-               <div className="h-1/3 w-full bg-gradient-to-b from-white via-white/40 to-transparent" />
+              <div className="h-1/3 w-full bg-linear-to-b from-white via-white/40 to-transparent" />
             </div>
 
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
-                initial={{ opacity: 0, scale: 1.1 }}
+                initial={{ opacity: 0, scale: 1.05 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.75, ease: "easeOut" }}
@@ -274,7 +267,7 @@ export default function App() {
                 <img
                   src={products[activeIndex].image}
                   alt={products[activeIndex].name}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover object-center"
                 />
               </motion.div>
             </AnimatePresence>
@@ -282,21 +275,20 @@ export default function App() {
         </div>
 
         {/* Bottom Pagination */}
-        <div className="absolute bottom-10 left-1/2 z-30 flex -translate-x-1/2 items-center gap-4">
+        <div className="absolute bottom-4 left-1/2 z-30 flex -translate-x-1/2 items-center gap-4 sm:bottom-6 md:bottom-8 lg:bottom-10">
           <div className="flex items-center gap-4">
             {products.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setActiveIndex(idx)}
-                className="group relative flex h-5 w-5 items-center justify-center focus:outline-none"
+                className="group relative flex h-5 w-5 items-center justify-center focus:outline-none cursor-pointer"
                 aria-label={`Go to slide ${idx + 1}`}
               >
                 <span
-                  className={`relative block rounded-full transition-all duration-300 ${
-                    activeIndex === idx
-                      ? "h-5 w-5 border-2 border-blue-600 bg-transparent"
-                      : "h-3 w-3 bg-white border border-gray-400 shadow-[0_0_0_1px_rgba(255,255,255,0.9)] group-hover:scale-110 group-hover:bg-blue-600 group-hover:shadow-[0_0_0_1px_rgba(37,99,235,0.4)]"
-                  }`}
+                  className={`relative block rounded-full transition-all duration-300 ${activeIndex === idx
+                    ? "h-5 w-5 border-2 border-blue-600 bg-transparent"
+                    : "h-3 w-3 bg-white border border-gray-400 shadow-[0_0_0_1px_rgba(255,255,255,0.9)] group-hover:scale-110 group-hover:bg-blue-600 group-hover:shadow-[0_0_0_1px_rgba(37,99,235,0.4)]"
+                    }`}
                 >
                   {activeIndex === idx ? (
                     <span className="absolute left-1/2 top-1/2 block h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600" />
