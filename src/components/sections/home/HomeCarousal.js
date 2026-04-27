@@ -207,14 +207,14 @@ export default function HomeCarousal() {
   //   }, [handleNext]);
 
   return (
-    <div className="mt-12 flex items-center justify-center bg-slate-50 px-3 py-2 sm:mt-16 sm:px-4 sm:py-4">
+    <div className="mt-20 flex items-center justify-center bg-slate-50 px-4 py-2 sm:px-6 sm:py-4 md:px-8 lg:px-[70px]">
       <section
-        className="relative mx-auto w-full max-w-[1440px] min-h-0 overflow-hidden rounded-2xl bg-white shadow-2xl shadow-slate-200/50 sm:rounded-3xl md:h-[min(56svh,540px)] md:min-h-[400px] lg:min-h-[440px]"
+        className="relative mx-auto w-full max-w-7xl min-h-0 overflow-hidden rounded-2xl bg-white shadow-2xl shadow-slate-200/50 sm:rounded-3xl md:h-[min(56svh,540px)] md:min-h-[400px] lg:min-h-[440px]"
         aria-label="Product highlights"
       >
         <div className="flex min-h-0 w-full flex-col md:h-full md:flex-row md:items-stretch">
           {/* Text: below image on mobile, left on md+ */}
-          <div className="relative z-20 order-2 flex w-full min-w-0 flex-col justify-center px-5 py-8 sm:px-8 sm:py-10 md:order-1 md:w-5/12 md:px-12 md:py-10 lg:px-20 xl:px-24">
+          <div className="relative z-20 order-2 flex w-full min-w-0 flex-col justify-center px-4 py-3.5 sm:px-5 sm:py-4 md:order-1 md:w-5/12 md:px-6 md:py-4 lg:px-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -222,20 +222,20 @@ export default function HomeCarousal() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 12 }}
                 transition={{ duration: 0.28, ease: [0.2, 0.8, 0.2, 1] }}
-                className="max-md:pb-10 md:mb-0"
+                className="max-md:pb-4 md:mb-0"
               >
-                <span className="mb-3 inline-block text-xs font-bold uppercase tracking-widest text-primary sm:mb-4 sm:text-sm md:text-base">
+                <span className="mb-1 inline-block text-xs font-bold uppercase tracking-wider text-primary sm:mb-1.5 sm:text-sm md:tracking-widest md:text-base">
                   {products[activeIndex].tagline}
                 </span>
 
-                <p className="mb-6 max-w-md text-base leading-relaxed text-slate-600 sm:mb-8 sm:text-lg md:mb-10">
+                <p className="mb-2.5 max-w-md text-base leading-snug text-slate-600 sm:mb-3 sm:text-lg md:mb-3 md:leading-relaxed">
                   {products[activeIndex].description}
                 </p>
 
-                <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
                   <a
                     href={products[activeIndex].href}
-                    className="group inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-bold text-white transition-all hover:shadow-xl hover:shadow-blue-200 active:scale-95 sm:px-5"
+                    className="group inline-flex items-center gap-1.5 rounded-full bg-primary px-2.5 py-1.5 text-xs font-bold text-white transition-all hover:shadow-xl hover:shadow-blue-200 active:scale-95 sm:gap-2 sm:px-3.5 sm:py-1.5 sm:text-sm md:px-4 md:py-2"
                   >
                     Learn more
                     <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />

@@ -189,9 +189,10 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 ">
-      <div className="mx-auto  ">
-        <div className="flex h-16 items-center justify-between  bg-white px-2 sm:px-4 shadow">
+    <header className="fixed top-0 left-0 right-0 z-40 border-b border-slate-100/90 bg-white shadow-sm backdrop-blur-sm">
+      {/* Gutter + max width mirror `HomeCarousal`: outer px, inner `max-w-[1440px]` */}
+      <div className="">
+        <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between">
           <Link
             href={ROUTES.HOME}
             className="flex shrink-0 items-center gap-1.5 sm:gap-2.5"
@@ -203,7 +204,7 @@ export default function Header() {
               height={32}
               className="shrink-0"
             />
-            <span className="text-foreground text-lg sm:text-xl font-bold font-syne ">
+            <span className=" text-lg sm:text-2xl font-bold text-black ">
               <span>Quantus</span>
               <span> Health</span>
             </span>
@@ -271,8 +272,8 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden fixed top-20 left-2 right-2 sm:left-4 sm:right-4 rounded-2xl border border-[#e2e8f0] bg-white shadow-lg max-h-[calc(100vh-5.5rem)] overflow-y-auto">
-          <div className="px-3 sm:px-4 py-3 sm:py-4 space-y-0">
+        <div className="fixed left-4 right-4 top-20 z-50 max-h-[calc(100vh-5.5rem)] overflow-y-auto rounded-2xl border border-[#e2e8f0] bg-white shadow-lg sm:left-6 sm:right-6 md:left-8 md:right-8 lg:hidden">
+          <div className="space-y-0 px-3 py-3 sm:px-4 sm:py-4">
             {navItems.map((item) => (
               <div key={item.label}>
                 {item.submenu ? (
