@@ -65,7 +65,7 @@ export default function HomeCarousal() {
 
     return (
         <section
-            className="relative flex min-h-svh w-full flex-col bg-white "
+            className="relative flex min-h-[82svh] max-w-7xl mx-auto flex-col bg-white"
             aria-label="Product highlights"
         >
             {/* pt-18 (~4.5rem) clears fixed Header (pt-4 + h-14). flex-1 fills viewport below that padding. */}
@@ -100,7 +100,7 @@ export default function HomeCarousal() {
                     </div>
 
                     {/* Right Image: order-1 on small screens so photo sits above copy */}
-                    <div className="relative order-1 min-h-[min(42vh,320px)] w-full min-w-0 md:order-2 md:min-h-0 md:h-auto md:w-3/5 md:flex-1">
+                    <div className="relative order-1 min-h-[min(34vh,280px)] w-full min-w-0 md:order-2 md:min-h-0 md:h-auto md:w-3/5 md:flex-1">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeIndex}
@@ -108,7 +108,7 @@ export default function HomeCarousal() {
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                                 transition={{ duration: 1 }}
-                                className="relative h-full min-h-[min(42vh,320px)] w-full md:absolute md:inset-0 md:min-h-0"
+                                className="relative h-full min-h-[min(34vh,280px)] w-full md:absolute md:inset-0 md:min-h-0"
                             >
                                 {/* The Soft Gradient Fade (White to Image) */}
                                 <div className="pointer-events-none absolute inset-0 z-10 bg-linear-to-r from-white via-white/20 to-transparent" />
@@ -116,7 +116,7 @@ export default function HomeCarousal() {
                                 <img
                                     src={products[activeIndex].image}
                                     alt={products[activeIndex].name}
-                                    className="h-full w-full min-h-[min(42vh,320px)] object-cover object-center md:min-h-0"
+                                    className="h-full w-full min-h-[min(34vh,280px)] object-cover object-center md:min-h-0"
                                 />
                             </motion.div>
                         </AnimatePresence>
