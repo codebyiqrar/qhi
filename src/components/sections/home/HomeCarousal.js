@@ -192,7 +192,7 @@ const products = [
   },
 ];
 
-const SLIDE_DURATION = 6000;
+const SLIDE_DURATION = 8000;
 
 export default function App() {
   const [activeIndex, setActiveIndex] = useState(0);
