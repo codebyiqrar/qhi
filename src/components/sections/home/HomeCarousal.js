@@ -163,7 +163,7 @@ const products = [
     name: "QRCM",
     tagline: "Revenue Cycle Management",
     description: "End-to-end revenue cycle management powered by intelligent automation to maximize your clinical reimbursements and streamline operations.",
-    image: "https://images.unsplash.com/photo-1686409277233-64922c0557ac?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTF8fG1lZGljYWwlMjBiaWxsaW5nfGVufDB8fDB8fHwy",
+    image: "https://images.unsplash.com/photo-1675270347058-8066cd1fe523?q=80&w=1225&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "#",
   },
   {
@@ -179,7 +179,7 @@ const products = [
     name: "QRPM",
     tagline: "Remote Patient Monitoring",
     description: "Extend care beyond the clinic walls with real-time patient tracking and actionable health insights delivered directly to your dashboard.",
-    image: "https://worksheets.clipart-library.com/images2/printable-world-map-with-countries-labeled-black-and-white/printable-world-map-with-countries-labeled-black-and-white-27.jpg",
+    image: "https://images.unsplash.com/photo-1758691462749-a95ce1bd7f96?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "#",
   },
   {
