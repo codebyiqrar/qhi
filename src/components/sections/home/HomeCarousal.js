@@ -146,6 +146,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import BackgroundAccents from "@/components/ui/BackgroundAccents";
 
 /**
  * Enhanced Home Carousel
@@ -192,7 +193,7 @@ const products = [
   },
 ];
 
-const SLIDE_DURATION = 8000;
+const SLIDE_DURATION = 20000;
 
 export default function HomeCarousal() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -201,108 +202,111 @@ export default function HomeCarousal() {
     setActiveIndex((prev) => (prev + 1) % products.length);
   }, []);
 
-  //   useEffect(() => {
-  //     const interval = setInterval(handleNext, SLIDE_DURATION);
-  //     return () => clearInterval(interval);
-  //   }, [handleNext]);
+  useEffect(() => {
+    const interval = setInterval(handleNext, SLIDE_DURATION);
+    return () => clearInterval(interval);
+  }, [handleNext]);
 
   return (
-    <div className="mt-20 flex items-center justify-center bg-slate-50 px-4 py-2 sm:px-6 sm:py-4 md:px-8 lg:px-[70px]">
-      <section
-        className="relative mx-auto w-full max-w-7xl min-h-0 overflow-hidden rounded-2xl bg-white shadow-2xl shadow-slate-200/50 sm:rounded-3xl md:h-[min(56svh,540px)] md:min-h-[400px] lg:min-h-[440px]"
-        aria-label="Product highlights"
-      >
-        <div className="flex min-h-0 w-full flex-col md:h-full md:flex-row md:items-stretch">
-          {/* Text: below image on mobile, left on md+ */}
-          <div className="relative z-20 order-2 flex w-full min-w-0 flex-col justify-center px-4 py-3.5 sm:px-5 sm:py-4 md:order-1 md:w-5/12 md:px-6 md:py-4 lg:px-8">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeIndex}
-                initial={{ opacity: 0, x: -12 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 12 }}
-                transition={{ duration: 0.28, ease: [0.2, 0.8, 0.2, 1] }}
-                className="max-md:pb-4 md:mb-0"
-              >
-                <span className="mb-1 inline-block text-xs font-bold uppercase tracking-wider text-primary sm:mb-1.5 sm:text-sm md:tracking-widest md:text-base">
-                  {products[activeIndex].tagline}
-                </span>
-
-                <p className="mb-2.5 max-w-md text-base leading-snug text-slate-600 sm:mb-3 sm:text-lg md:mb-3 md:leading-relaxed">
-                  {products[activeIndex].description}
-                </p>
-
-                <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
-                  <a
-                    href={products[activeIndex].href}
-                    className="group inline-flex items-center gap-1.5 rounded-full bg-primary px-2.5 py-1.5 text-xs font-bold text-white transition-all hover:shadow-xl hover:shadow-blue-200 active:scale-95 sm:gap-2 sm:px-3.5 sm:py-1.5 sm:text-sm md:px-4 md:py-2"
-                  >
-                    Learn more
-                    <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
-                  </a>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Image: top on mobile, right on md+ */}
-          <div className="relative order-1 h-[min(36svh,280px)] min-h-[200px] w-full min-w-0 overflow-hidden sm:min-h-[220px] sm:h-[min(38svh,320px)] md:order-2 md:h-auto md:min-h-0 md:w-7/12 md:flex-1">
-            <div className="absolute inset-0 z-10 hidden md:block">
-              <div className="h-full w-1/3 bg-linear-to-r from-white via-white/80 to-transparent" />
-            </div>
-
-            <div className="absolute inset-0 z-10 md:hidden">
-              <div className="h-1/3 w-full bg-linear-to-b from-white via-white/40 to-transparent" />
-            </div>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeIndex}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.75, ease: "easeOut" }}
-                className="absolute inset-0 h-full w-full"
-              >
-                <img
-                  src={products[activeIndex].image}
-                  alt={products[activeIndex].name}
-                  className="h-full w-full object-cover object-center"
-                />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
-
-        {/* Bottom Pagination */}
-        <div className="absolute bottom-4 left-1/2 z-30 flex -translate-x-1/2 items-center gap-4 sm:bottom-6 md:bottom-8 lg:bottom-10">
-          <div className="flex items-center gap-4">
-            {products.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setActiveIndex(idx)}
-                className="group relative flex h-5 w-5 items-center justify-center focus:outline-none cursor-pointer"
-                aria-label={`Go to slide ${idx + 1}`}
-              >
-                <span
-                  className={`relative block rounded-full transition-all duration-300 ${activeIndex === idx
-                    ? "h-5 w-5 border-2 border-blue-600 bg-transparent"
-                    : "h-3 w-3 bg-white border border-gray-400 shadow-[0_0_0_1px_rgba(255,255,255,0.9)] group-hover:scale-110 group-hover:bg-blue-600 group-hover:shadow-[0_0_0_1px_rgba(37,99,235,0.4)]"
-                    }`}
+    <BackgroundAccents>
+      <div className="mt-20 flex items-center justify-center bg-slate-50 px-4 py-2 sm:px-6 sm:py-4 md:px-8 lg:px-[70px]">
+        <section
+          className="relative mx-auto w-full max-w-7xl min-h-0 overflow-hidden rounded-2xl bg-white shadow-2xl shadow-slate-200/50 sm:rounded-3xl md:h-[min(56svh,540px)] md:min-h-[400px] lg:min-h-[440px]"
+          aria-label="Product highlights"
+        >
+          <div className="flex min-h-0 w-full flex-col md:h-full md:flex-row md:items-stretch">
+            {/* Text: below image on mobile, left on md+ */}
+            <div className="relative z-20 order-2 flex w-full min-w-0 flex-col justify-center px-4 py-3.5 sm:px-5 sm:py-4 md:order-1 md:w-5/12 md:px-6 md:py-4 lg:px-8">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 12 }}
+                  transition={{ duration: 0.28, ease: [0.2, 0.8, 0.2, 1] }}
+                  className="max-md:pb-4 md:mb-0"
                 >
-                  {activeIndex === idx ? (
-                    <span className="absolute left-1/2 top-1/2 block h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600" />
-                  ) : null}
-                </span>
-              </button>
-            ))}
+                  <span className="mb-1 inline-block text-xs font-bold uppercase tracking-wider text-primary sm:mb-1.5 sm:text-sm md:tracking-widest md:text-base">
+                    {products[activeIndex].tagline}
+                  </span>
+
+                  <p className="mb-2.5 max-w-md text-base leading-snug text-slate-600 sm:mb-3 sm:text-lg md:mb-3 md:leading-relaxed">
+                    {products[activeIndex].description}
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+                    <a
+                      href={products[activeIndex].href}
+                      className="group inline-flex items-center gap-1.5 rounded-full bg-primary px-2.5 py-1.5 text-xs font-bold text-white transition-all hover:shadow-xl hover:shadow-blue-200 active:scale-95 sm:gap-2 sm:px-3.5 sm:py-1.5 sm:text-sm md:px-4 md:py-2"
+                    >
+                      Learn more
+                      <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
+                    </a>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Image: top on mobile, right on md+ */}
+            <div className="relative order-1 h-[min(36svh,280px)] min-h-[200px] w-full min-w-0 overflow-hidden sm:min-h-[220px] sm:h-[min(38svh,320px)] md:order-2 md:h-auto md:min-h-0 md:w-7/12 md:flex-1">
+              <div className="absolute inset-0 z-10 hidden md:block">
+                <div className="h-full w-1/3 bg-linear-to-r from-white via-white/80 to-transparent" />
+              </div>
+
+              <div className="absolute inset-0 z-10 md:hidden">
+                <div className="h-1/3 w-full bg-linear-to-b from-white via-white/40 to-transparent" />
+              </div>
+
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.75, ease: "easeOut" }}
+                  className="absolute inset-0 h-full w-full"
+                >
+                  <img
+                    src={products[activeIndex].image}
+                    alt={products[activeIndex].name}
+                    className="h-full w-full object-cover object-center"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
 
-        </div>
+          {/* Bottom Pagination */}
+          <div className="absolute bottom-4 left-1/2 z-30 flex -translate-x-1/2 items-center gap-4 sm:bottom-6 md:bottom-8 lg:bottom-10">
+            <div className="flex items-center gap-4">
+              {products.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveIndex(idx)}
+                  className="group relative flex h-5 w-5 items-center justify-center focus:outline-none cursor-pointer"
+                  aria-label={`Go to slide ${idx + 1}`}
+                >
+                  <span
+                    className={`relative block rounded-full transition-all duration-300 ${activeIndex === idx
+                      ? "h-5 w-5 border-2 border-blue-600 bg-transparent"
+                      : "h-3 w-3 bg-white border border-gray-400 shadow-[0_0_0_1px_rgba(255,255,255,0.9)] group-hover:scale-110 group-hover:bg-blue-600 group-hover:shadow-[0_0_0_1px_rgba(37,99,235,0.4)]"
+                      }`}
+                  >
+                    {activeIndex === idx ? (
+                      <span className="absolute left-1/2 top-1/2 block h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600" />
+                    ) : null}
+                  </span>
+                </button>
+              ))}
+            </div>
 
-        {/* Background Accent */}
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50 pointer-events-none" />
-      </section>
-    </div>
+          </div>
+
+          {/* Background Accent */}
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50 pointer-events-none" />
+        </section>
+      </div>
+    </BackgroundAccents>
+
   );
 }
