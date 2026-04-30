@@ -1,11 +1,24 @@
 "use client";
 
-import { ArrowRight, Menu, X, ChevronDown } from "lucide-react";
+import {
+  ArrowRight,
+  Menu,
+  X,
+  ChevronDown,
+  FolderOpen,
+  Building2,
+  Briefcase,
+  BookOpen,
+  Newspaper,
+  PhoneCall,
+  ActivitySquare,
+  FileText,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import {
   NavigationMenu,
@@ -21,23 +34,82 @@ import { navItems } from "@/constants/header";
 import { SPECIALITIES } from "@/constants/specialities";
 import { LOCATIONS } from "@/constants/locations";
 
-function SubmenuLinks({ items, onNavigate, mobile = false }) {
-  return items.map((sub) => (
-    <li key={sub.label}>
+const SUBMENU_META = {
+  "QRCM (Revenue Cycle Management)": {
+    description: "Optimize claims processing and reimbursement workflows.",
+    icon: ActivitySquare,
+  },
+  "QChargeAI (Charge Capture)": {
+    description: "Automate charge capture with faster coding accuracy.",
+    icon: FileText,
+  },
+  "QRPM (Remote Patient Monitoring)": {
+    description: "Monitor patients remotely with continuous engagement.",
+    icon: FolderOpen,
+  },
+  "QEHR (Electronic Health Record)": {
+    description: "Unified records, charting, and care coordination tools.",
+    icon: BookOpen,
+  },
+  "About Us": {
+    description: "Learn about our mission, team, and company story.",
+    icon: Building2,
+  },
+  Careers: {
+    description: "Join our team and build the future of healthcare tech.",
+    icon: Briefcase,
+  },
+  "Contact Us": {
+    description: "Reach out for partnerships, support, or consultations.",
+    icon: PhoneCall,
+  },
+  Blogs: {
+    description: "Latest product insights, trends, and expert articles.",
+    icon: Newspaper,
+  },
+  "Case Studies": {
+    description: "See how providers achieve measurable outcomes with us.",
+    icon: BookOpen,
+  },
+};
+
+function SubmenuLinks({ items, onNavigate, mobile = false, sectionLabel = "Menu" }) {
+  return items.map((sub, index) => (
+    <li
+      key={sub.label}
+      className={`list-none ${mobile || index === items.length - 1 ? "" : "border-b border-[#eaf1f9]"}`}
+    >
       {mobile ? (
         <button
-          className="block cursor-pointer w-full text-left py-1.5 sm:py-2 px-2 sm:px-3 text-xs sm:text-sm font-medium text-[#10172A] hover:text-[#202124] hover:bg-[#f3f4f6] rounded-lg transition"
+          className="flex w-full items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-left text-sm font-medium text-[#10172A] transition hover:border-[#dbe7f6] hover:bg-[#f7fbff] hover:text-[#0D94E4]"
           onClick={() => onNavigate(sub.link)}
         >
-          {sub.label}
+          <span className="flex min-w-0 items-center gap-2.5">
+            <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-[#dce8f7] bg-[#f8fbff] text-[#5f7290]">
+              {React.createElement(SUBMENU_META[sub.label]?.icon || FolderOpen, { className: "h-3.5 w-3.5" })}
+            </span>
+            <span className="truncate">{sub.label}</span>
+          </span>
+          <ArrowRight className="h-3.5 w-3.5 shrink-0 text-[#9aa8bc]" />
         </button>
       ) : (
         <NavigationMenuLink asChild>
           <button
             onClick={() => onNavigate(sub.link)}
-            className="block w-full rounded-md px-3 py-2.5 text-left text-sm font-medium text-[#10172A] hover:text-[#202124] hover:bg-[#f3f4f6] transition cursor-pointer"
+            className="group grid w-full grid-cols-[40px_1fr_30px] items-center gap-3 rounded-lg px-3 py-3 text-left transition cursor-pointer hover:bg-[#f7fbff]"
           >
-            {sub.label}
+            <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#dce8f7] bg-[#f8fbff] text-[#5f7290] transition group-hover:border-[#c4dcf8] group-hover:bg-white group-hover:text-[#0D94E4]">
+              {React.createElement(SUBMENU_META[sub.label]?.icon || FolderOpen, { className: "h-4.5 w-4.5" })}
+            </span>
+            <span className="min-w-0">
+              <span className="block truncate text-[16px] font-semibold leading-6 text-[#0f172a] group-hover:text-[#0788d8]">{sub.label}</span>
+              <span className="mt-0.5 block text-[14px] leading-5 text-[#64748b]">
+                {SUBMENU_META[sub.label]?.description || `Explore ${sub.label} in ${sectionLabel}.`}
+              </span>
+            </span>
+            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white text-[#8b99ae] ring-1 ring-[#dbe7f7] transition group-hover:translate-x-0.5 group-hover:text-[#0D94E4]">
+              <ArrowRight className="h-3.5 w-3.5" />
+            </span>
           </button>
         </NavigationMenuLink>
       )}
@@ -54,18 +126,26 @@ function SpecialitiesMenu({ onNavigate, mobile = false, isExpanded = false, onTo
       <div>
         <button
           onClick={onToggle}
-          className="flex w-full items-center justify-between px-2 sm:px-3 py-2 sm:py-2.5 text-sm sm:text-base font-medium text-[#202124] hover:bg-[#f3f4f6] rounded-lg transition"
+          className="flex w-full items-center justify-between rounded-xl border border-[#e3ecf7] bg-[#f8fbff] px-3 py-2.5 text-sm font-semibold text-[#1f2b3d] transition hover:bg-[#f2f8ff]"
         >
           <span>Specialities</span>
-          <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
+          <ChevronDown className={`h-4 w-4 text-[#5d7393] transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
         </button>
-        {isExpanded && (
-          <div className="pl-2 sm:pl-4 space-y-2 pt-1 pb-2">
+        <AnimatePresence initial={false}>
+          {isExpanded && (
+            <motion.div
+              initial={{ opacity: 0, height: 0, y: -6 }}
+              animate={{ opacity: 1, height: "auto", y: 0 }}
+              exit={{ opacity: 0, height: 0, y: -6 }}
+              transition={{ duration: 0.22, ease: "easeInOut" }}
+              className="mt-2 overflow-hidden"
+            >
+              <div className="space-y-1.5 rounded-xl border border-[#e8eef7] bg-white p-2">
             {regularItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.link || "#")}
-                className="flex w-full items-center px-2 cursor-pointer sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-[#10172A] hover:text-[#0D94E4] transition rounded-lg"
+                className="flex w-full items-center rounded-lg px-3 py-2 text-sm font-medium text-[#10172A] transition hover:bg-[#f6faff] hover:text-[#0D94E4]"
               >
                 {item.label}
               </button>
@@ -73,16 +153,18 @@ function SpecialitiesMenu({ onNavigate, mobile = false, isExpanded = false, onTo
             {ctaItem ? (
               <button
                 onClick={() => onNavigate(ctaItem.link || "#")}
-                className="flex w-full items-center justify-between gap-2 rounded-full bg-[#0D94E4] px-3 py-1.5 sm:py-2 text-[11px] sm:text-[14px] font-medium text-white transition hover:bg-[#0b87cf] mt-2"
+                className="mt-1 flex w-full items-center justify-between gap-2 rounded-full bg-[#0D94E4] px-3 py-2 text-[13px] font-medium text-white transition hover:bg-[#0b87cf]"
               >
                 <span>{ctaItem.label}</span>
-                <span className="inline-flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-white flex-shrink-0">
+                <span className="inline-flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-white shrink-0">
                   <ArrowRight className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-[#0D94E4]" />
                 </span>
               </button>
             ) : null}
-          </div>
-        )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     );
   }
@@ -126,18 +208,26 @@ function LocationsMenu({ onNavigate, mobile = false, isExpanded = false, onToggl
       <div>
         <button
           onClick={onToggle}
-          className="flex w-full items-center justify-between px-2 sm:px-3 py-2 sm:py-2.5 text-sm sm:text-base font-medium text-[#202124] hover:bg-[#f3f4f6] rounded-lg transition"
+          className="flex w-full items-center justify-between rounded-xl border border-[#e3ecf7] bg-[#f8fbff] px-3 py-2.5 text-sm font-semibold text-[#1f2b3d] transition hover:bg-[#f2f8ff]"
         >
           <span>Locations</span>
-          <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
+          <ChevronDown className={`h-4 w-4 text-[#5d7393] transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
         </button>
-        {isExpanded && (
-          <div className="pl-2 sm:pl-4 space-y-2 pt-1 pb-2">
+        <AnimatePresence initial={false}>
+          {isExpanded && (
+            <motion.div
+              initial={{ opacity: 0, height: 0, y: -6 }}
+              animate={{ opacity: 1, height: "auto", y: 0 }}
+              exit={{ opacity: 0, height: 0, y: -6 }}
+              transition={{ duration: 0.22, ease: "easeInOut" }}
+              className="mt-2 overflow-hidden"
+            >
+              <div className="space-y-1.5 rounded-xl border border-[#e8eef7] bg-white p-2">
             {regularItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.link || "#")}
-                className="flex w-full items-center px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-[#10172A] hover:text-[#0D94E4] transition rounded-lg"
+                className="flex w-full items-center rounded-lg px-3 py-2 text-sm font-medium text-[#10172A] transition hover:bg-[#f6faff] hover:text-[#0D94E4]"
               >
                 {item.label}
               </button>
@@ -145,16 +235,18 @@ function LocationsMenu({ onNavigate, mobile = false, isExpanded = false, onToggl
             {ctaItem ? (
               <button
                 onClick={() => onNavigate(ctaItem.link || "#")}
-                className="flex w-full items-center justify-between gap-2 rounded-full bg-[#0D94E4] px-3 py-1.5 sm:py-2 text-[11px] sm:text-[14px] font-medium text-white transition hover:bg-[#0b87cf] mt-2"
+                className="mt-1 flex w-full items-center justify-between gap-2 rounded-full bg-[#0D94E4] px-3 py-2 text-[13px] font-medium text-white transition hover:bg-[#0b87cf]"
               >
                 <span>{ctaItem.label}</span>
-                <span className="inline-flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-white flex-shrink-0">
+                <span className="inline-flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-white shrink-0">
                   <ArrowRight className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-[#0D94E4]" />
                 </span>
               </button>
             ) : null}
-          </div>
-        )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     );
   }
@@ -211,10 +303,9 @@ export default function Header() {
   };
 
   const toggleMobileSubmenu = (menuLabel) => {
-    setExpandedMenus((prev) => ({
-      ...prev,
-      [menuLabel]: !prev[menuLabel],
-    }));
+    setExpandedMenus((prev) => (
+      prev[menuLabel] ? {} : { [menuLabel]: true }
+    ));
   };
 
   return (
@@ -261,10 +352,15 @@ export default function Header() {
                           <LocationsMenu onNavigate={handleNavigate} />
                         </NavigationMenuContent>
                       ) : (
-                        <NavigationMenuContent className="md:left-1/2 md:-translate-x-1/2">
-                          <ul className="grid w-max min-w-60 gap-0.5">
-                            <SubmenuLinks items={item.submenu} onNavigate={handleNavigate} />
-                          </ul>
+                        <NavigationMenuContent className="border-0! bg-transparent! shadow-none! p-0 md:left-1/2 md:-translate-x-1/2">
+                          <div className="w-[560px] rounded-2xl border border-[#dfebf8] bg-linear-to-b from-white to-[#f8fbff] p-3 shadow-[0_20px_55px_rgba(15,23,42,0.14)]">
+                            <div className="px-2 pb-2 pt-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#7486a3]">
+                              {item.label}
+                            </div>
+                            <ul className="grid gap-1">
+                              <SubmenuLinks items={item.submenu} onNavigate={handleNavigate} sectionLabel={item.label} />
+                            </ul>
+                          </div>
                         </NavigationMenuContent>
                       )}
                     </>
@@ -313,11 +409,37 @@ export default function Header() {
         </div>
       </div>
 
-      {open && (
-        <div className="lg:hidden fixed top-20 left-2 right-2 sm:left-4 sm:right-4 rounded-2xl border border-[#e2e8f0] bg-white shadow-lg max-h-[calc(100vh-5.5rem)] overflow-y-auto">
-          <div className="px-3 sm:px-4 py-3 sm:py-4 space-y-0">
+      <AnimatePresence>
+        {open && (
+          <>
+            <motion.div
+              className="lg:hidden fixed inset-0 top-[72px] bg-[#0f172a]/30 backdrop-blur-[2px]"
+              onClick={() => setOpen(false)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="lg:hidden fixed top-20 left-2 right-2 sm:left-4 sm:right-4 rounded-2xl border border-[#dfe9f6] bg-linear-to-b from-white to-[#f8fbff] shadow-[0_20px_45px_rgba(15,23,42,0.2)] max-h-[calc(100vh-5.5rem)] overflow-y-auto"
+              initial={{ opacity: 0, y: -14, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.985 }}
+              transition={{ duration: 0.24, ease: "easeOut" }}
+            >
+            <div className="sticky top-0 z-10 flex items-center justify-between border-b border-[#e8eef7] bg-white/90 px-4 py-3 backdrop-blur">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#6b7f9d]">Menu</span>
+              <button
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#e0e8f4] text-[#516684]"
+                onClick={() => setOpen(false)}
+                aria-label="Close menu"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+            <div className="px-3 sm:px-4 py-3 sm:py-4 space-y-2">
             {navItems.map((item) => (
-              <div key={item.label}>
+              <div key={item.label} className="rounded-xl border border-[#e6edf7] bg-white p-1.5">
                 {item.submenu ? (
                   <>
                     {item.label.toLowerCase().includes("special") ? (
@@ -338,26 +460,36 @@ export default function Header() {
                       <div>
                         <button
                           onClick={() => toggleMobileSubmenu(item.label)}
-                          className="flex w-full items-center justify-between px-2 sm:px-3 py-2 sm:py-2.5 text-sm sm:text-base font-medium text-[#202124] hover:bg-[#f3f4f6] rounded-lg transition"
+                          className="flex w-full items-center justify-between rounded-lg px-2.5 py-2.5 text-sm font-semibold text-[#1f2b3d] transition hover:bg-[#f4f8ff]"
                         >
-                          <span >{item.label}</span>
-                          <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${expandedMenus[item.label] ? 'rotate-180' : ''}`} />
+                          <span>{item.label}</span>
+                          <ChevronDown className={`h-4 w-4 text-[#5d7393] transition-transform duration-200 ${expandedMenus[item.label] ? 'rotate-180' : ''}`} />
                         </button>
-                        {expandedMenus[item.label] && (
-                          <div className="pl-2 sm:pl-4 space-y-0.5 py-2 border-b border-[#e2e8f0]">
-                            <SubmenuLinks
-                              items={item.submenu}
-                              onNavigate={handleNavigate}
-                              mobile
-                            />
-                          </div>
-                        )}
+                        <AnimatePresence initial={false}>
+                          {expandedMenus[item.label] && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0, y: -4 }}
+                              animate={{ opacity: 1, height: "auto", y: 0 }}
+                              exit={{ opacity: 0, height: 0, y: -4 }}
+                              transition={{ duration: 0.2, ease: "easeInOut" }}
+                              className="mt-1 overflow-hidden"
+                            >
+                              <div className="space-y-1 rounded-lg border border-[#e9eff8] bg-[#fcfdff] p-1.5">
+                                <SubmenuLinks
+                                  items={item.submenu}
+                                  onNavigate={handleNavigate}
+                                  mobile
+                                />
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                     )}
                   </>
                 ) : (
                   <button
-                    className="flex w-full items-center px-2 sm:px-3 py-2 sm:py-2.5 text-sm sm:text-base font-medium text-[#202124] hover:bg-[#f3f4f6] rounded-lg transition"
+                    className="flex w-full items-center rounded-lg px-2.5 py-2.5 text-sm font-semibold text-[#1f2b3d] transition hover:bg-[#f4f8ff]"
                     onClick={() => handleNavigate(item.link)}
                   >
                     {item.label}
@@ -365,7 +497,7 @@ export default function Header() {
                 )}
               </div>
             ))}
-            <div className="pt-2 sm:pt-3 mt-2 sm:mt-3 border-t border-[#e2e8f0]">
+            <div className="mt-1 border-t border-[#e2e8f0] pt-3">
               <motion.div
                 className="w-full"
                 whileHover={{ scale: 1.01 }}
@@ -386,8 +518,10 @@ export default function Header() {
               </motion.div>
             </div>
           </div>
-        </div>
-      )}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

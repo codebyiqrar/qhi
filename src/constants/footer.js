@@ -6,11 +6,12 @@ const companyLinkedInUrl = "https://www.linkedin.com/company/quantus-health/";
 export const companyLinks = [
   { title: "About Us", link: ROUTES.ABOUT },
   { title: "Career", link: "#" },
+
+  { title: "Request Demo", link: ROUTES.REQUEST_DEMO },
+  { title: "Contact Us", link: ROUTES.CONTACT },
+
   { title: "Privacy Policy", link: ROUTES.LEGAL.PRIVACY },
   { title: "Terms & Conditions", link: ROUTES.LEGAL.TERMS },
-  // { title: "FAQs", link: "#" },
-  { title: "Contact Us", link: ROUTES.CONTACT },
-  // { title: "News", link: "#" },
 ];
 
 export const productsLinks = [

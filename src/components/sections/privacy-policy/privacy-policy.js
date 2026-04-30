@@ -1,4 +1,5 @@
 import BackgroundAccents from "@/components/ui/BackgroundAccents";
+import { companyContactEmail, companyPhoneNumber } from "@/constants/header";
 
 export default function PrivacyPolicyPage() {
     return (
@@ -151,7 +152,7 @@ export default function PrivacyPolicyPage() {
                                     href="tel:+19452606897"
                                     className="text-[#10172a] underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0D94E4]"
                                 >
-                                    (945) 260-6897
+                                    {companyPhoneNumber}
                                 </a>
                             </p>
                             <p className="text-sm sm:text-base font-medium text-[#10172a] wrap-anywhere">
@@ -160,7 +161,7 @@ export default function PrivacyPolicyPage() {
                                     href="mailto:contactus@quantushealthinc.com"
                                     className="text-[#10172a] underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0D94E4]"
                                 >
-                                    contactus@quantushealthinc.com
+                                    {companyContactEmail}
                                 </a>
                             </p>
                         </address>

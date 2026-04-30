@@ -20,6 +20,12 @@ const showcaseCards = [
             'See how to track patient vitals and engagement remotely to keep care connected.',
         icon: '/demo/request-demo-icon-qrpm.svg',
     },
+    {
+        title: 'QEHR (Electronic Health Record)',
+        description:
+            'Explore how to manage patient records in one place to improve documentation and continuity of care.',
+        icon: '/demo/request-demo-icon-qehr.svg',
+    },
 ]
 
 const RequestDemoShowcaseSection = () => {
@@ -29,7 +35,7 @@ const RequestDemoShowcaseSection = () => {
                 <h2 className="text-center font-syne text-[34px] font-semibold leading-[1.2] text-white sm:text-[38px]">
                     What we will <span className="text-[#0D94E4]">show you</span>
                 </h2>
-                <div className="mt-12 grid gap-6 lg:grid-cols-3">
+                <div className="mt-12 grid gap-6 lg:grid-cols-4">
                     {showcaseCards.map((card) => (
                         <article key={card.title} className="rounded-2xl bg-[#383A6A57] p-8">
                             <div className="mb-6 flex h-[67px] w-[67px] items-center justify-center rounded-2xl bg-[#F6FCFE]">

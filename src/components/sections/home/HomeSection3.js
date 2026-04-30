@@ -28,6 +28,14 @@ const cards = [
     imageSrc: "/rpm.png",
     imageAlt: "QRPM dashboard preview",
   },
+  {
+    title: "QEHR",
+    description:
+      "Keep patient records organized in one secure place to improve documentation and continuity of care.",
+    href: ROUTES.SOLUTIONS.QEHR,
+    imageSrc: "/ehr.png",
+    imageAlt: "QEHR dashboard preview",
+  },
 ];
 
 export default function HomeSection3() {
@@ -68,7 +76,7 @@ export default function HomeSection3() {
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4  max-w-7xl mx-auto">
           {cards.map((card) => (
             <article
               key={card.title}
@@ -84,7 +92,7 @@ export default function HomeSection3() {
 
                 <Link
                   href={card.href}
-                  className="mt-4 inline-flex w-fit items-center gap-2 rounded-lg py-2 text-primary font-semibold text-sm transition-colors hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 font-dm-sans"
+                  className="mt-auto inline-flex w-fit items-center gap-2 rounded-lg py-2 text-primary font-semibold text-sm transition-colors hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 font-dm-sans"
                 >
                   Learn More
                   <ArrowUpRight className="w-4 h-4" />

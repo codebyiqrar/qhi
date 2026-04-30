@@ -17,7 +17,7 @@ import {
 } from "@/constants/header";
 
 const FOOTER_TAGLINE =
-  "Empowering healthcare providers with intelligent patient monitoring, billing, and charge capture solutions.";
+  "Empowering healthcare providers with intelligent patient monitoring, electronic health records, billing, and charge capture solutions.";
 
 const FOOTER_TEXT = "#10172A";
 const fontDmSans = "var(--font-dm-sans)";
@@ -82,7 +82,7 @@ const FooterColumn = ({ title, links }) => (
         <li key={item.title}>
           <Link
             href={item.link}
-            className="text-[15px] leading-normal transition hover:underline sm:text-[16px]"
+            className="block text-[15px] leading-[1.35] transition hover:underline sm:text-[16px]"
             style={{ color: FOOTER_TEXT }}
           >
             {item.title}

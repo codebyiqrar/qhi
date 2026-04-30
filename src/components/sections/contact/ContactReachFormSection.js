@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { ArrowRight, CheckIcon, Clock3, Mail, MapPin, Phone } from "lucide-react";
-import { companyContactEmail, companyPhoneNumber } from "@/constants/header";
+import { companyContactEmail, companyPhoneNumber, companyAddress } from "@/constants/header";
 import { submitContactForm } from "@/services/contact-us-api";
 
 const errorMessage = "There was an error submitting the form. Please try again.";
@@ -88,7 +88,7 @@ const ContactReachFormSection = () => {
                             <MapPin className="mt-1 h-7 w-7 shrink-0" />
                             <div>
                                 <p className="text-[16px] text-[#E2E2E2]">You can find us at</p>
-                                <p className="text-[24px] font-medium">abc Street 23, NewYork..</p>
+                                <p className="text-[24px] font-medium">{companyAddress}</p>
                             </div>
                         </div>
                         <div className="flex gap-4">

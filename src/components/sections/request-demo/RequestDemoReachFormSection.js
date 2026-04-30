@@ -1,6 +1,6 @@
 "use client";
 
-import { companyContactEmail, companyPhoneNumber } from "@/constants/header";
+import { companyContactEmail, companyPhoneNumber, companyAddress } from "@/constants/header";
 import { submitContactForm } from "@/services/contact-us-api";
 import { ArrowRight, CheckIcon } from "lucide-react";
 import React, { useState } from "react";
@@ -74,9 +74,7 @@ const RequestDemoReachFormSection = () => {
                         <div>
                             <p className="text-[18px] text-white">Address</p>
                             <p className="mt-1 text-[16px] leading-[1.35] text-[#E2E2E2]">
-                                Street 123, NewYork abcd
-                                <br />
-                                City xyz, Type your Complete Address Here
+                                {companyAddress}
                             </p>
                         </div>
                         <div>

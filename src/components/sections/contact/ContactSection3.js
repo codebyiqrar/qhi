@@ -1,8 +1,12 @@
+'use client'
+import { ROUTES } from '@/constants/routes'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 const ContactSection3 = () => {
+    const router = useRouter()
     return (
         <section className="mx-auto pb-20 pt-14 sm:px-6 lg:pb-0 lg:px-[70px]">
             <div className="grid items-end gap-8 lg:grid-cols-[minmax(0,752px)_1fr]">
@@ -22,6 +26,7 @@ const ContactSection3 = () => {
                         paper logs, we can show you how QChargeAI makes hospital rounding a lot faster.
                     </p>
                     <button
+                        onClick={() => router.push(ROUTES.REQUEST_DEMO)}
                         type="button"
                         className="mt-8 flex h-[54px] items-center gap-5 rounded-full bg-[#0D94E4] pl-7 pr-3 text-[18px] text-[#F3F3F3]"
                     >
