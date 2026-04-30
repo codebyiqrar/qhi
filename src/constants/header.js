@@ -3,7 +3,9 @@ import { ROUTES } from "./routes";
 export const companyLinkedInUrl = 'https://www.linkedin.com/company/quantus-health/'
 export const companyContactEmail = 'contactus@quantushealthinc.com'
 export const companyPhoneNumber = '(945) 260-6897'
-export const companyAddress = '1309 COFFEEN AVE STE 1200 SHERIDAN, WY 82801'
+// export const companyAddress = '1309 COFFEEN AVE STE 1200 SHERIDAN, WY 82801'
+export const companyAddress = '500 North Central Expressway, Suite 500, Plano, TX 75074'
+
 export const companyName = 'Quantus Health'
 
 export const navItems = [
