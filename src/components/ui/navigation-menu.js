@@ -1,6 +1,6 @@
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { cva } from "class-variance-authority";
-import { IoMdArrowDropdown } from "react-icons/io";
+import { ChevronDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -64,8 +64,8 @@ function NavigationMenuTrigger({
       className={cn(navigationMenuTriggerStyle(), "group", className)}
       {...props}>
       {children}{" "}
-      <IoMdArrowDropdown
-        className="relative top-[1px] ml-1 text-lg transition duration-300 group-data-[state=open]:rotate-180"
+      <ChevronDown
+        className="relative top-px ml-1 h-4 w-4 text-current/80 transition-transform duration-200 ease-out group-data-[state=open]:rotate-180"
         aria-hidden="true" />
     </NavigationMenuPrimitive.Trigger>
   );
