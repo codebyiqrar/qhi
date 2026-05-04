@@ -1,17 +1,30 @@
 import Image from "next/image";
 import React from "react";
 
+import { getSiteUrl } from "@/constants/site";
+
+const path = "/qchargeai-flows";
+const title = "QChargeAI Flows | Quantus Health";
+const description =
+  "QChargeAI care team invite and passwordless login flows via SMS — designed for secure, transactional provider authentication. Optimized for Twilio communications.";
+
 export const metadata = {
-    title: "QChargeAI Flows | Quantus Health",
-    description:
-        "QChargeAI care team invite and passwordless login flows via SMS — designed for secure, transactional provider authentication. Optimized for Twilio communications.",
+  title,
+  description,
+  alternates: { canonical: `${getSiteUrl()}${path}` },
+  openGraph: {
+    title,
+    description,
+    url: path,
+  },
+  twitter: { title, description },
 };
 
 export default function InvitePage() {
     return (
         <main className="min-h-screen bg-background">
             {/* Hero */}
-            <div className="border-b border-border bg-linear-to-b from-accent/30 to-background">
+            <div className="border-b border-border bg-linear-to-b from-accent/30 to-background mt-10">
                 <div className="mx-auto max-w-4xl px-4 py-14 text-center sm:px-6 sm:py-20 lg:px-8">
                     <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
                         QChargeAI · Charge Capture

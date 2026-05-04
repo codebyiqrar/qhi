@@ -1,7 +1,25 @@
-import SpecialitiesSection from '@/components/specialities/SpecialitiesSection'
-import TalkToExpert from '@/components/ui/TalkToExpert'
-import { aboutPageContent } from '@/constants/about';
-import React from 'react'
+import SpecialitiesSection from "@/components/specialities/SpecialitiesSection";
+import TalkToExpert from "@/components/ui/TalkToExpert";
+import { aboutPageContent } from "@/constants/about";
+import React from "react";
+import { ROUTES } from "@/constants/routes";
+import { getSiteUrl } from "@/constants/site";
+
+const title = "Medical Specialities | Quantus Health";
+const description =
+  "Healthcare solutions tailored by speciality—orthopedics, cardiology, neurology, primary care, and more—with charge capture, RPM, and revenue cycle support.";
+
+export const metadata = {
+  title,
+  description,
+  alternates: { canonical: `${getSiteUrl()}${ROUTES.SPECIALITIES.INDEX}` },
+  openGraph: {
+    title,
+    description,
+    url: ROUTES.SPECIALITIES.INDEX,
+  },
+  twitter: { title, description },
+};
 
 const Page = () => {
   const { ctaForm } = aboutPageContent;

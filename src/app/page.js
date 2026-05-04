@@ -19,11 +19,15 @@ import { ctaText } from "@/constants/home";
 import HeroSection from "@/components/sections/home/HeroSection";
 import HomeSection12 from "@/components/sections/home/HomeSection12";
 import HomeCarousal from "@/components/sections/home/HomeCarousal";
-// test
+import { getSiteUrl } from "@/constants/site";
+
+const homeTitle = "Quantus Health | Healthcare Products & Digital Solutions";
+const homeDescription =
+  "Quantus Health delivers innovative healthcare products and digital solutions designed to enhance patient care, improve efficiency, and support modern healthcare operations.";
+
 export const metadata = {
-  title: "Quantus Health | Healthcare Products & Digital Solutions",
-  description:
-    "Quantus Health delivers innovative healthcare products and digital solutions designed to enhance patient care, improve efficiency, and support modern healthcare operations.",
+  title: homeTitle,
+  description: homeDescription,
   keywords: [
     "Quantus Health",
     "Healthcare products",
@@ -33,6 +37,18 @@ export const metadata = {
     "Patient care tools",
     "Clinical productivity",
   ],
+  alternates: {
+    canonical: getSiteUrl(),
+  },
+  openGraph: {
+    title: homeTitle,
+    description: homeDescription,
+    url: getSiteUrl(),
+  },
+  twitter: {
+    title: homeTitle,
+    description: homeDescription,
+  },
 };
 
 

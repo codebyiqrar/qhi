@@ -30,9 +30,9 @@ const JobCard = ({ item }) => (
       <span className="rounded-full border border-[#D1D5DB] px-4 py-2.5 text-sm text-[#10172A] sm:px-[30px] sm:py-[14px] sm:text-[18px]">
         {item.type}
       </span>
-      <span className="rounded-full border border-[#D1D5DB] px-4 py-2.5 text-sm text-[#10172A] sm:px-[30px] sm:py-[14px] sm:text-[18px]">
+      {/* <span className="rounded-full border border-[#D1D5DB] px-4 py-2.5 text-sm text-[#10172A] sm:px-[30px] sm:py-[14px] sm:text-[18px]">
         {item.location}
-      </span>
+      </span> */}
     </div>
 
     <h3 className="mt-7 font-dm-sans text-[22px] font-medium leading-tight text-[#10172A] sm:text-[24px]">
@@ -43,9 +43,9 @@ const JobCard = ({ item }) => (
     </p>
 
     <div className="mt-7 flex flex-wrap items-center gap-3">
-      <button className="h-12 w-full rounded-full bg-primary px-6 text-base text-[#F3F3F3] transition hover:bg-[#0b87cf] sm:h-[54px] sm:w-auto sm:px-[36px] sm:text-[18px]">
+      {/* <button className="h-12 w-full rounded-full bg-primary px-6 text-base text-[#F3F3F3] transition hover:bg-[#0b87cf] sm:h-[54px] sm:w-auto sm:px-[36px] sm:text-[18px]">
         Explore Job
-      </button>
+      </button> */}
       <CircleArrowButton label="Apply now" href="/contact" />
     </div>
   </article>
@@ -163,8 +163,8 @@ const CareersContent = () => {
 
         </div>
       </section>
-      <section
-        id="current-openings"
+      {/* <section
+        id="general-application"
         className="relative -mt-24 overflow-visible bg-transparent px-4 sm:-mt-14 sm:px-6 pb-16 sm:pb-20"
       >
 
@@ -207,7 +207,7 @@ const CareersContent = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 };

@@ -76,8 +76,8 @@ const TalkToExpert = ({ heading, placeholders = [], buttonText, onSubmit, classN
             const data = {
                 access_key: apiKey,
                 name: form.name || "Website Visitor",
-                email: form.email || "no-reply@quantus-health.com",
-                phone: form.phone || "",
+                email: form.email,
+                phone: form.phone,
                 subject: heading || "Talk to Expert form submission",
                 message: details,
                 from_name: "Quantus Health Website",

@@ -8,160 +8,103 @@ export default function TermsOfServicePage() {
                 <div className="max-w-6xl mx-auto w-full py-10 sm:py-14 md:py-20 lg:py-24">
 
                     {/* Title */}
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#10172a] mb-10 sm:mb-12 md:mb-16 leading-tight tracking-tight px-1 sm:px-0">
-                        Terms And Condition
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#10172a] mb-6 sm:mb-8 md:mb-10 leading-tight tracking-tight px-1 sm:px-0">
+                        Terms of Service
                     </h1>
 
-                    <Section title="Authorization And Account Use">
-                        <p className="text-sm sm:text-base text-[#464646] mb-4 leading-relaxed">
-                            Quantus Health grants your practice a limited, non-transferable right to use
-                            our platform for medical billing automation and patient monitoring workflows.
-                            By creating an account, you agree to provide accurate details and maintain
-                            the security of your login credentials.
-                        </p>
-                        <List
-                            items={[
-                                {
-                                    title: "Security First.",
-                                    desc: "Keep your password private and notify us immediately if there is suspicious activity.",
-                                },
-                                {
-                                    title: "Authorized Use Only.",
-                                    desc: "Your account must be used by approved team members under your organization.",
-                                },
-                                {
-                                    title: "Your Responsibility.",
-                                    desc: "You are accountable for all actions taken through your account.",
-                                },
-                                {
-                                    title: "Alert Us.",
-                                    desc: "If login details are exposed, we can temporarily restrict access to protect your data.",
-                                },
-                            ]}
-                        />
-                    </Section>
+                    <p className="text-sm sm:text-base text-[#464646] text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 leading-relaxed px-1 sm:px-0">
+                        Please read these Terms of Service carefully before using Quantus Health&apos;s
+                        products and website.
+                    </p>
 
-                    <Section title="Scope Of Services And Clinical Responsibility">
-                        <p className="text-sm sm:text-base text-[#464646] mb-4 leading-relaxed">
-                            Quantus Health provides software tools for charge capture, claims support,
-                            remote patient data intake, and operational workflow visibility. Our platform
-                            is intended to support your practice&apos;s efficiency and documentation quality.
-                        </p>
-                        <List
-                            items={[
-                                {
-                                    title: "Charge Capture.",
-                                    desc: "Capture billing-ready events at the point of care and reduce missed reimbursement opportunities.",
-                                },
-                                {
-                                    title: "QRCM.",
-                                    desc: "Assist your team in submitting clean claims and identifying denial trends.",
-                                },
-                                {
-                                    title: "QRPM.",
-                                    desc: "Help practices monitor eligible patient activity and track engagement targets.",
-                                },
-                                {
-                                    title: "No Medical Advice.",
-                                    desc: "Our services are administrative and technical only, not a substitute for clinical judgment.",
-                                },
-                            ]}
-                        />
-                        <p className="text-sm sm:text-base text-[#464646] leading-relaxed mt-4">
-                            Quantus Health is a technology provider and does not assume liability for
-                            patient diagnosis, treatment plans, or clinical outcomes.
-                        </p>
-                    </Section>
-
-                    <Section title="HIPAA Compliance And Data Security">
-                        <p className="text-sm sm:text-base text-[#464646] mb-4 leading-relaxed">
-                            Quantus Health operates as a business associate and applies administrative,
-                            technical, and physical safeguards to protect protected health information.
-                            We maintain strict controls to align with HIPAA and related healthcare
-                            privacy requirements.
-                        </p>
-                        <List
-                            items={[
-                                {
-                                    title: "Audit Logs.",
-                                    desc: "System activity is recorded to support traceability and compliance reviews.",
-                                },
-                                {
-                                    title: "Access Controls.",
-                                    desc: "Role-based permissions limit data visibility to authorized users.",
-                                },
-                                {
-                                    title: "BAA Available.",
-                                    desc: "A Business Associate Agreement can be provided for covered entities and partners.",
-                                },
-                                {
-                                    title: "Secure Infrastructure.",
-                                    desc: "Data is protected through encryption, controlled environments, and ongoing monitoring.",
-                                },
-                            ]}
-                        />
-                    </Section>
-
-                    <Section title="Payments And Billing Terms">
-                        <p className="text-sm sm:text-base text-[#464646] mb-4 leading-relaxed">
-                            By subscribing to Quantus Health services, you agree to pay all applicable
-                            fees listed in your signed service order or statement of work. Fees may
-                            include monthly platform subscriptions, usage-based components, and one-time
-                            onboarding charges.
-                        </p>
-                        <List
-                            items={[
-                                {
-                                    title: "Subscription Fees.",
-                                    desc: "Billed according to the agreed billing cycle and payable by the due date.",
-                                },
-                                {
-                                    title: "Usage-Based Charges.",
-                                    desc: "Calculated from actual claim volume, monitored encounters, or connected facilities, as applicable.",
-                                },
-                                {
-                                    title: "No Refunds.",
-                                    desc: "Paid amounts are non-refundable except where required by law or expressly stated in writing.",
-                                },
-                                {
-                                    title: "Price Adjustments.",
-                                    desc: "We may revise pricing with advance written notice to your account administrator.",
-                                },
-                            ]}
-                        />
-                    </Section>
-
-                    <Section title="Ending The Agreement">
-                        <p className="text-sm sm:text-base text-[#464646] mb-4 leading-relaxed">
-                            Either party may terminate the relationship under the terms in your service
-                            agreement. You may cancel by written notice, and Quantus Health may suspend
-                            or terminate service for non-payment, fraud, security risk, or material
-                            breach of these terms.
-                        </p>
-                        <List
-                            items={[
-                                {
-                                    title: "Your Right To Cancel.",
-                                    desc: "Submit notice before the next billing cycle to avoid additional recurring charges.",
-                                },
-                                {
-                                    title: "Our Right To Suspend.",
-                                    desc: "Service may be restricted when required to protect system integrity or legal compliance.",
-                                },
-                                {
-                                    title: "Data Access.",
-                                    desc: "When the agreement ends, data export options remain available for the period defined in your contract.",
-                                },
-                            ]}
-                        />
-                    </Section>
-
-                    <Section title="Amendments To The Agreement">
+                    <Section title="1. Acceptance of Terms">
                         <p className="text-sm sm:text-base text-[#464646] leading-relaxed">
-                            Quantus Health may update these terms periodically to reflect legal, security,
-                            or product changes. Updated terms become effective on the posted date. Your
-                            continued use of the platform after an update indicates acceptance of the
-                            revised agreement.
+                            By accessing or using the services provided by Quantus Health Inc.
+                            (&quot;we&quot;, &quot;our&quot;, &quot;us&quot;), you agree to comply with
+                            and be bound by these Terms of Service. If you do not agree, you may not use
+                            our solutions, applications, or website.
+                        </p>
+                    </Section>
+
+                    <Section title="2. Services Provided">
+                        <p className="text-sm sm:text-base text-[#464646] leading-relaxed">
+                            Quantus Health provides healthcare technology solutions designed to improve
+                            operational efficiency, patient outcomes, and financial performance. Our
+                            products may include analytics platforms, billing automation, and AI-driven
+                            clinical tools. We may update, modify, or discontinue features as part of
+                            continuous improvement.
+                        </p>
+                    </Section>
+
+                    <Section title="3. User Responsibilities">
+                        <List
+                            items={[
+                                {
+                                    title: "Accurate information.",
+                                    desc: "Provide accurate information when creating an account or using our services.",
+                                },
+                                {
+                                    title: "Lawful use.",
+                                    desc: "Use our solutions only for lawful purposes and in compliance with all applicable regulations.",
+                                },
+                                {
+                                    title: "Confidentiality.",
+                                    desc: "Maintain confidentiality of account credentials and sensitive data.",
+                                },
+                            ]}
+                        />
+                    </Section>
+
+                    <Section title="4. Intellectual Property">
+                        <p className="text-sm sm:text-base text-[#464646] leading-relaxed">
+                            All materials, software, interfaces, and intellectual property provided by
+                            Quantus Health—including trademarks, logos, and proprietary technologies—remain
+                            the exclusive property of Quantus Health Inc. Unauthorized reproduction,
+                            modification, or distribution is prohibited.
+                        </p>
+                    </Section>
+
+                    <Section title="5. Data Privacy">
+                        <p className="text-sm sm:text-base text-[#464646] leading-relaxed">
+                            Your use of our services is also governed by our Privacy Policy. By using
+                            our platform, you consent to the collection and use of data as outlined
+                            there.
+                        </p>
+                    </Section>
+
+                    <Section title="6. Limitation of Liability">
+                        <p className="text-sm sm:text-base text-[#464646] leading-relaxed">
+                            Quantus Health shall not be held liable for any indirect, incidental, or
+                            consequential damages arising from the use or inability to use our services.
+                            We do not guarantee uninterrupted availability or error-free performance.
+                        </p>
+                    </Section>
+
+                    <Section title="7. Termination">
+                        <p className="text-sm sm:text-base text-[#464646] leading-relaxed">
+                            We reserve the right to suspend or terminate user access if these Terms are
+                            violated or if continued access poses a risk to system integrity, data
+                            security, or compliance obligations.
+                        </p>
+                    </Section>
+
+                    <Section title="8. Governing Law">
+                        <p className="text-sm sm:text-base text-[#464646] leading-relaxed">
+                            These Terms are governed by and construed under the laws of the State of
+                            Texas, United States, without regard to conflict of law principles. Any
+                            disputes shall be resolved in the courts located in Dallas County, Texas.
+                        </p>
+                    </Section>
+
+                    <Section title="9. SMS Terms">
+                        <p className="text-sm sm:text-base text-[#464646] mb-4 leading-relaxed">
+                            By registering for or using Quantus Health services, you agree to receive
+                            transactional SMS messages related to account access, including one-time
+                            passcodes and invitation links.
+                        </p>
+                        <p className="text-sm sm:text-base text-[#464646] leading-relaxed">
+                            You can opt out at any time by replying STOP. Reply HELP for assistance.
+                            Message and data rates may apply.
                         </p>
                     </Section>
                 </div>

@@ -32,19 +32,78 @@ const syne = Syne({
   variable: "--font-syne",
 });
 
+const siteUrl = getSiteUrl();
+const siteName = "Quantus Health";
+const defaultDescription =
+  "Quantus Health delivers AI-powered healthcare solutions—charge capture, RPM, RCM, and EHR tools—to improve patient care and streamline clinical and revenue operations.";
+
 export const metadata = {
-  metadataBase: new URL(getSiteUrl()),
-  title: "Quantus Health",
-  description: "AI-Powered Healthcare Solutions",
+  metadataBase: new URL(siteUrl),
+  title: `${siteName} | AI-Powered Healthcare Solutions`,
+  description: defaultDescription,
+  applicationName: siteName,
+  referrer: "origin-when-cross-origin",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName,
+    title: `${siteName} | AI-Powered Healthcare Solutions`,
+    description: defaultDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteName} | AI-Powered Healthcare Solutions`,
+    description: defaultDescription,
+  },
   icons: {
     icon: "/logo.svg",
   },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: siteName,
+      url: siteUrl,
+      logo: `${siteUrl}/logo.svg`,
+      description: defaultDescription,
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      name: siteName,
+      url: siteUrl,
+      publisher: { "@id": `${siteUrl}/#organization` },
+    },
+  ],
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <Script
+          id="json-ld-organization"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
